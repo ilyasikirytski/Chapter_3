@@ -40,6 +40,10 @@ public class Student {
         this.group = group;
     }
 
+    public Student(String id) {
+        this.id = id;
+    }
+
     void sortByFaculty(String faculty) {
         if (faculty.equals(this.faculty)) {
             System.out.printf("Cтуденты из %s факультета %n" +
