@@ -115,8 +115,20 @@ public class Customer {
         for (int i = 0; i < arrOfCustomers.length; i++) {
             names[i] = arrOfCustomers[i].name;
         }
-
         Arrays.sort(names);
+//        System.out.println("Клиенты отсортированные в алфавитном порядке");
+//        for (String name : names) {
+//            for (Customer customers : arrOfCustomers) {
+//                if (name.equals(customers.name)) {
+//                    System.out.println(customers);
+//                }
+//            }
+//        }
+
+        alphabetSort(arrOfCustomers, names);
+        bankCardInRange(arrOfCustomers, 0, 5);
+    }
+    static void alphabetSort(Customer[] arrOfCustomers, String[] names){
         System.out.println("Клиенты отсортированные в алфавитном порядке");
         for (String name : names) {
             for (Customer customers : arrOfCustomers) {
@@ -125,9 +137,12 @@ public class Customer {
                 }
             }
         }
-        System.out.println("Клиенты, банковские карты которых входят в указанный диапазон");
+    }
+
+    static void bankCardInRange(Customer[] arrOfCustomers, int rangeFrom, int rangeTo){
+        System.out.printf("Клиенты, банковские карты которых входят в диапазон от %s до %s%n", rangeFrom, rangeTo);
         for (Customer customers : arrOfCustomers) {
-            if (customers.cardNumber > 0 && customers.cardNumber < 5) {
+            if (customers.cardNumber > rangeFrom && customers.cardNumber < rangeTo) {
                 System.out.println(customers);
             }
         }
