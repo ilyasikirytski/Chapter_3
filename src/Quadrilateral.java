@@ -72,14 +72,14 @@ public class Quadrilateral {
         ArrayList<Double> rhombusDouble = new ArrayList<>();
         ArrayList<Double> perimeter = new ArrayList<>();
 
-        square(quadrilaterals, quadril, rectangle, rhombus);
+        square(quadrilaterals);
         perimeter(quadrilaterals, perimeter);
         groupOfTriangle(quadrilaterals, quadrilDouble, rectangleDouble, rhombusDouble, quadril, rectangle, rhombus);
         numberOfGroupOfTriangles(quadril, rectangle, rhombus);
         maxAndMinSqrt(quadrilDouble, rectangleDouble, rhombusDouble);
     }
 
-    static void square(Quadrilateral[] quadrilaterals, ArrayList<Quadrilateral> quadril, ArrayList<Quadrilateral> rectangle, ArrayList<Quadrilateral> rhombus) {
+    static void square(Quadrilateral[] quadrilaterals) {
         System.out.println("---------------------");
         for (int i = 0; i < quadrilaterals.length; i++) {
             if (quadrilaterals[i].a == quadrilaterals[i].b && quadrilaterals[i].b == quadrilaterals[i].c && quadrilaterals[i].c == quadrilaterals[i].d && quadrilaterals[i].d == quadrilaterals[i].a) {
