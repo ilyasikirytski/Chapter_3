@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import static java.lang.Math.sqrt;
@@ -60,13 +59,16 @@ public class Triangle {
         ArrayList<Triangle> equilateral = new ArrayList<>();
         ArrayList<Triangle> isosceles = new ArrayList<>();
         ArrayList<Triangle> unequal = new ArrayList<>();
+        ArrayList<Double> equilateralDouble = new ArrayList<>();
+        ArrayList<Double> isoscelesDouble = new ArrayList<>();
+        ArrayList<Double> unequalDouble = new ArrayList<>();
         Double[] perimeter = new Double[triangles.length];
 
         squareHeron(triangles);
         perimeter(triangles, perimeter);
-        groupOfTriangle(triangles, equilateral, isosceles, unequal);
+        groupOfTriangle(triangles, equilateralDouble, isoscelesDouble, unequalDouble,equilateral, isosceles, unequal);
         numberOfGroupOfTriangles(equilateral, isosceles, unequal);
-        maxAndMinSqrt(perimeter, equilateral, isosceles, unequal);
+        maxAndMinSqrt(equilateralDouble, isoscelesDouble, unequalDouble);
     }
 
     static void squareHeron(Triangle[] triangles) {
@@ -87,17 +89,20 @@ public class Triangle {
         }
     }
 
-    static void groupOfTriangle(Triangle[] triangles, ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
+    static void groupOfTriangle(Triangle[] triangles, ArrayList<Double> equilateralDouble, ArrayList<Double> isoscelesDouble, ArrayList<Double> unequalDouble,ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
         System.out.println("---------------------");
         for (int i = 0; i < triangles.length; i++) {
             if (triangles[i].a == triangles[i].b && triangles[i].b == triangles[i].c) {
                 equilateral.add(triangles[i]);
+                equilateralDouble.add(triangles[i].a + triangles[i].b + triangles[i].c);
                 System.out.printf("Треугольник № %s - Равносторонний %n", i);
             } else if (triangles[i].a == triangles[i].b || triangles[i].b == triangles[i].c || triangles[i].c == triangles[i].a) {
                 isosceles.add(triangles[i]);
+                isoscelesDouble.add(triangles[i].a + triangles[i].b + triangles[i].c);
                 System.out.printf("Треугольник № %s - Равнобедренный %n", i);
             } else if (triangles[i].a != triangles[i].b || triangles[i].b != triangles[i].c || triangles[i].c != triangles[i].a) {
                 unequal.add(triangles[i]);
+                unequalDouble.add(triangles[i].a + triangles[i].b + triangles[i].c);
                 System.out.printf("Треугольник № %s - Прямоугольный %n", i);
             }
         }
@@ -116,22 +121,22 @@ public class Triangle {
         }
     }
 
-    static void maxAndMinSqrt(Double[] perimeter, ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
+    static void maxAndMinSqrt(ArrayList<Double> equilateralDouble, ArrayList<Double> isoscelesDouble, ArrayList<Double> unequalDouble) {
         System.out.println("---------------------");
         System.out.println("Группа равносторонние");
-        for (int i = 1; i < equilateral.size(); i++) {
-            System.out.printf("Min perimeter : %s; %n", perimeter[i - 1]);
-            System.out.printf("Max perimeter : %s; %n", perimeter[i]);
+        for (int i = 1; i < equilateralDouble.size(); i++) {
+            System.out.printf("Min perimeter : %s; %n", Collections.min(equilateralDouble));
+            System.out.printf("Max perimeter : %s; %n", Collections.max(equilateralDouble));
         }
         System.out.println("Группа равнобедренные");
-        for (int i = 1; i < isosceles.size(); i++) {
-            System.out.printf("Min perimeter : %s; %n", perimeter[i - 1]);
-            System.out.printf("Max perimeter : %s; %n", perimeter[i]);
+        for (int i = 1; i < isoscelesDouble.size(); i++) {
+            System.out.printf("Min perimeter : %s; %n", Collections.min(isoscelesDouble));
+            System.out.printf("Max perimeter : %s; %n", Collections.max(isoscelesDouble));
         }
         System.out.println("Группа прямоугольные");
-        for (int i = 1; i < unequal.size(); i++) {
-            System.out.printf("Min perimeter : %s; %n", perimeter[i - 1]);
-            System.out.printf("Max perimeter : %s; %n", perimeter[i]);
+        for (int i = 1; i < unequalDouble.size(); i++) {
+            System.out.printf("Min perimeter : %s; %n", Collections.min(unequalDouble));
+            System.out.printf("Max perimeter : %s; %n", Collections.max(unequalDouble));
         }
     }
 }
