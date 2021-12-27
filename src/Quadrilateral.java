@@ -53,6 +53,7 @@ public class Quadrilateral {
         this.d = d;
     }
 
+    // TODO вынести в отдельный класс все что не нужно quadrilateral
     public static void main(String[] args) {
         Quadrilateral quadrilateral = new Quadrilateral(1, 1, 1, 1);
         Quadrilateral quadrilateral2 = new Quadrilateral(2, 2, 2, 2);

@@ -140,6 +140,7 @@ public class Student {
                 " Group " + group;
     }
 
+    // TODO вынести в отдельный класс все что не нужно student
     public static void main(String[] args) {
         Student student = new Student("1", "1", "1", "1", "1", "1", "1", "1", "7", "4");
         Student student2 = new Student("2", "2", "2", "2", "2", "2", "2", "2", "8", "5");

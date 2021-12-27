@@ -53,6 +53,8 @@ public class Circle {
         this.y = y;
     }
 
+
+    // TODO вынести в отдельный класс все что не нужно circle
     public static void main(String[] args) {
         Circle circle = new Circle(1, 1, 0, 5);
         Circle circle2 = new Circle(2, 2, 0, 4);

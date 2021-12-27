@@ -100,6 +100,7 @@ public class Customer {
                 " Bank Number - " + bankNumber;
     }
 
+    // TODO вынести в отдельный класс все что не нужно customer
     public static void main(String[] args) {
         Customer customer = new Customer("1", "1", "D", "1", "1", 1, "1");
         Customer customer2 = new Customer("2", "2", "C", "2", "2", 2, "2");
