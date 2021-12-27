@@ -112,24 +112,15 @@ public class Customer {
         arrOfCustomers[2] = customer3;
         arrOfCustomers[3] = customer4;
 
-        for (int i = 0; i < arrOfCustomers.length; i++) {
-            names[i] = arrOfCustomers[i].name;
-        }
-        Arrays.sort(names);
-//        System.out.println("Клиенты отсортированные в алфавитном порядке");
-//        for (String name : names) {
-//            for (Customer customers : arrOfCustomers) {
-//                if (name.equals(customers.name)) {
-//                    System.out.println(customers);
-//                }
-//            }
-//        }
-
         alphabetSort(arrOfCustomers, names);
         bankCardInRange(arrOfCustomers, 0, 5);
     }
     static void alphabetSort(Customer[] arrOfCustomers, String[] names){
         System.out.println("Клиенты отсортированные в алфавитном порядке");
+        for (int i = 0; i < arrOfCustomers.length; i++) {
+            names[i] = arrOfCustomers[i].name;
+        }
+        Arrays.sort(names);
         for (String name : names) {
             for (Customer customers : arrOfCustomers) {
                 if (name.equals(customers.name)) {
