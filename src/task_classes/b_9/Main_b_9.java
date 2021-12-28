@@ -6,8 +6,8 @@ import java.util.Collections;
 public class Main_b_9 {
     public static void main(String[] args) {
         Circle circle = new Circle(1, 1, 0, 5);
-        Circle circle2 = new Circle(2, 2, 0, 4);
-        Circle circle3 = new Circle(3, 3, 3, 4);
+        Circle circle2 = new Circle(2, 2, 0, 5);
+        Circle circle3 = new Circle(3, 3, 3, 5);
         Circle circle4 = new Circle(4, 4, 3, 5);
 
         Circle[] circles = new Circle[4];
@@ -46,9 +46,9 @@ public class Main_b_9 {
     static void onTheSameLine(Circle[] circles) {
         System.out.println("-----------------");
         for (int i = 1; i < circles.length; i++) {
-            if (circles[i].x == circles[i - 1].x || circles[i].x == circles[i].y) {
+            if (circles[i].x == circles[i - 1].x || circles[i].x == circles[i - 1].y) {
                 System.out.printf("Окружность №%s c центром в точке [X:%s,Y:%s] лежит на одной прямой с окружностью №%s" +
-                        " c центром в точке [X:%s,Y:%s] %n", circles[i].id, circles[i].x, circles[i].y, circles[i].id, circles[i].x, circles[i].y);
+                        " c центром в точке [X:%s,Y:%s] %n", circles[i].id, circles[i].x, circles[i].y, circles[i-1].id, circles[i-1].x, circles[i-1].y);
             }
         }
     }
