@@ -1,5 +1,3 @@
-import java.util.*
-
 fun main() {
     val circle = Kot_B_9_Circle(1, 1.0, 0.0, 5.0)
     val circle2 = Kot_B_9_Circle(2, 2.0, 0.0, 4.0)
@@ -40,16 +38,16 @@ fun circleLength(circles: Array<Kot_B_9_Circle?>, area: ArrayList<Double>) {
 fun onTheSameLine(circles: Array<Kot_B_9_Circle?>) {
     println("-----------------")
     for (i in 1 until circles.size) {
-        if (circles[i]!!.x == circles[i - 1]!!.x || circles[i]!!.x == circles[i]!!.y) {
+        if (circles[i]!!.x == circles[i - 1]!!.x || circles[i]!!.x == circles[i - 1]!!.y) {
             System.out.printf(
                 "Окружность №%s c центром в точке [X:%s,Y:%s] лежит на одной прямой с окружностью №%s" +
                         " c центром в точке [X:%s,Y:%s] %n",
                 circles[i]!!.id,
                 circles[i]!!.x,
                 circles[i]!!.y,
-                circles[i]!!.id,
-                circles[i]!!.x,
-                circles[i]!!.y
+                circles[i - 1]!!.id,
+                circles[i - 1]!!.x,
+                circles[i - 1]!!.y
             )
         }
     }
