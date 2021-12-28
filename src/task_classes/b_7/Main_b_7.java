@@ -1,51 +1,11 @@
+package task_classes.b_7;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 import static java.lang.Math.sqrt;
 
-/*
-Определить класс Треугольник на плоскости.
-Определить площадь и периметр треугольника.
-Создать массив/список/множество объектов и подсчитать количество
-треугольников разного типа (равносторонний, равнобедренный, прямоугольный, произвольный).
-Определить для каждой группы наибольший и наименьший по площади (периметру) объект
- */
-public class Triangle {
-    double a;
-    double b;
-    double c;
-
-    public Triangle(double a, double b, double c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-
-    public double getA() {
-        return a;
-    }
-
-    public void setA(double a) {
-        this.a = a;
-    }
-
-    public double getD() {
-        return b;
-    }
-
-    public void setB(double b) {
-        this.b = b;
-    }
-
-    public double getC() {
-        return c;
-    }
-
-    public void setC(double c) {
-        this.c = c;
-    }
-
-    // TODO вынести в отдельный класс все что не нужно triangle
+public class Main_b_7 {
     public static void main(String[] args) {
         Triangle triangle = new Triangle(1, 1, 1);
         Triangle triangle2 = new Triangle(2, 2, 2);
@@ -67,7 +27,7 @@ public class Triangle {
 
         squareHeron(triangles);
         perimeter(triangles, perimeter);
-        groupOfTriangle(triangles, equilateralDouble, isoscelesDouble, unequalDouble,equilateral, isosceles, unequal);
+        groupOfTriangle(triangles, equilateralDouble, isoscelesDouble, unequalDouble, equilateral, isosceles, unequal);
         numberOfGroupOfTriangles(equilateral, isosceles, unequal);
         maxAndMinSqrt(equilateralDouble, isoscelesDouble, unequalDouble);
     }
@@ -90,7 +50,7 @@ public class Triangle {
         }
     }
 
-    static void groupOfTriangle(Triangle[] triangles, ArrayList<Double> equilateralDouble, ArrayList<Double> isoscelesDouble, ArrayList<Double> unequalDouble,ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
+    static void groupOfTriangle(Triangle[] triangles, ArrayList<Double> equilateralDouble, ArrayList<Double> isoscelesDouble, ArrayList<Double> unequalDouble, ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
         System.out.println("---------------------");
         for (int i = 0; i < triangles.length; i++) {
             if (triangles[i].a == triangles[i].b && triangles[i].b == triangles[i].c) {
@@ -141,4 +101,3 @@ public class Triangle {
         }
     }
 }
-
