@@ -1,59 +1,9 @@
-/*
-Определить класс Четырехугольник на плоскости. Определить площадь
-и периметр четырехугольника. Создать массив/список/множество объектов
-и подсчитать количество четырехугольников разного типа (квадрат, прямоугольник, ромб, произвольный). Определить для каждой группы наибольший
-и наименьший по площади (периметру) объект.
- */
+package task_classes.b_8;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Quadrilateral {
-    double a;
-    double b;
-    double c;
-    double d;
-
-    public Quadrilateral(double a, double b, double c, double d) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-    }
-
-    public double getA() {
-        return a;
-    }
-
-    public void setA(double a) {
-        this.a = a;
-    }
-
-    public double getB() {
-        return b;
-    }
-
-    public void setB(double b) {
-        this.b = b;
-    }
-
-    public double getC() {
-        return c;
-    }
-
-    public void setC(double c) {
-        this.c = c;
-    }
-
-    public double getD() {
-        return d;
-    }
-
-    public void setD(double d) {
-        this.d = d;
-    }
-
-    // TODO вынести в отдельный класс все что не нужно quadrilateral
+public class Main_b_8 {
     public static void main(String[] args) {
         Quadrilateral quadrilateral = new Quadrilateral(1, 1, 1, 1);
         Quadrilateral quadrilateral2 = new Quadrilateral(2, 2, 2, 2);
@@ -138,7 +88,6 @@ public class Quadrilateral {
         }
     }
 
-    // создать
     static void maxAndMinSqrt(ArrayList<Double> quadrilDouble, ArrayList<Double> rectangleDouble, ArrayList<Double> rhombusDouble) {
         System.out.println("---------------------");
         System.out.println("Группа квадраты");
