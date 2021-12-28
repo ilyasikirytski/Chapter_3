@@ -45,6 +45,7 @@ public class Triangle {
         this.c = c;
     }
 
+    // TODO вынести в отдельный класс все что не нужно triangle
     public static void main(String[] args) {
         Triangle triangle = new Triangle(1, 1, 1);
         Triangle triangle2 = new Triangle(2, 2, 2);

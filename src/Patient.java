@@ -106,6 +106,7 @@ public class Patient {
                 " Diagnosis " + diagnosis;
     }
 
+    // TODO вынести в отдельный класс все что не нужно patient
     public static void main(String[] args) {
         Patient patient = new Patient("1", "1", "1", "1", "1", "1", "1", "1");
         Patient patient2 = new Patient("2", "2", "2", "2", "2", "2", "2", "2");
