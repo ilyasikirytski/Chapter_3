@@ -16,16 +16,16 @@ d) список учебной группы.
 
 // TODO сдулать поля private
 public class Student {
-    String id;
-    String surName;
-    String name;
-    String patronymic;
-    int birthDate;
-    String address;
-    String phoneNumber;
-    String faculty;
-    String course;
-    String group;
+    private String id;
+    private String surName;
+    private String name;
+    private String patronymic;
+    private int birthDate;
+    private String address;
+    private String phoneNumber;
+    private String faculty;
+    private String course;
+    private String group;
 
     public Student(String id, String surName, String name, String patronymic, int birthDate,
                    String address, String phoneNumber, String faculty, String course, String group) {
