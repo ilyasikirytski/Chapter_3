@@ -2,6 +2,7 @@ package task_classes.b_7;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import static java.lang.Math.sqrt;
 
@@ -32,6 +33,8 @@ public class Main_b_7 {
         maxAndMinSqrt(equilateralDouble, isoscelesDouble, unequalDouble);
     }
 
+    // TODO названия методов с глаголом
+    // TODO площадь в отдельный метод, лучше в Triangle
     static void squareHeron(Triangle[] triangles) {
         System.out.println("---------------------");
         for (int i = 0; i < triangles.length; i++) {
@@ -41,6 +44,7 @@ public class Main_b_7 {
         }
     }
 
+    // TODO названия методов с глаголом
     static void perimeter(Triangle[] triangles, Double[] perimeter) {
         System.out.println("---------------------");
         for (int i = 0; i < triangles.length; i++) {
@@ -50,6 +54,10 @@ public class Main_b_7 {
         }
     }
 
+    // TODO названия методов с глаголом
+    // TODO периметр в отдельный метод, лучше в Triangle
+    // TODO вывод на экран и группировку разделить на 2 метода
+    // TODO вынести определение типа треугольника в отдельный метод
     static void groupOfTriangle(Triangle[] triangles, ArrayList<Double> equilateralDouble, ArrayList<Double> isoscelesDouble, ArrayList<Double> unequalDouble, ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
         System.out.println("---------------------");
         for (int i = 0; i < triangles.length; i++) {
@@ -69,6 +77,7 @@ public class Main_b_7 {
         }
     }
 
+    // TODO названия методов с глаголом
     static void numberOfGroupOfTriangles(ArrayList<Triangle> equilateral, ArrayList<Triangle> isosceles, ArrayList<Triangle> unequal) {
         System.out.println("---------------------");
         if (equilateral != null) {
@@ -82,6 +91,8 @@ public class Main_b_7 {
         }
     }
 
+    // TODO названия методов с глаголом
+    // TODO убрать ArrayList<Double>, использовать comparable или comparator
     static void maxAndMinSqrt(ArrayList<Double> equilateralDouble, ArrayList<Double> isoscelesDouble, ArrayList<Double> unequalDouble) {
         System.out.println("---------------------");
         System.out.println("Группа равносторонние");

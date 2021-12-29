@@ -1,3 +1,4 @@
+// TODO подправить к синтаксису Kotlin
 fun main() {
     val circle = Kot_B_9_Circle(1, 1.0, 0.0, 5.0)
     val circle2 = Kot_B_9_Circle(2, 2.0, 0.0, 4.0)

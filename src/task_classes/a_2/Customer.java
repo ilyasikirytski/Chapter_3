@@ -5,6 +5,7 @@ package task_classes.a_2;// task_classes.a_2.Customer: id, Фамилия, Им�
 //b) список покупателей, у которых номер кредитной карточки находится
 //в заданном интервале.
 
+// TODO использовать Comparable или Comparator
 public class Customer {
     String id;
     String surName;

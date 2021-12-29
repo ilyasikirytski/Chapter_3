@@ -19,6 +19,7 @@ public class Main_A_2 {
         bankCardInRange(arrOfCustomers, 0, 5);
     }
 
+    // TODO убрать массив имен, отсортировать по имени именно массив Customer
     static void alphabetSort(Customer[] arrOfCustomers, String[] names) {
         System.out.println("Клиенты отсортированные в алфавитном порядке");
         for (int i = 0; i < arrOfCustomers.length; i++) {

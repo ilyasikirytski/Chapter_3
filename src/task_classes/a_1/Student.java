@@ -14,6 +14,7 @@ c) список студентов, родившихся после заданн
 d) список учебной группы.
  */
 
+// TODO сдулать поля private
 public class Student {
     String id;
     String surName;

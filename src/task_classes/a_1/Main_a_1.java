@@ -1,6 +1,7 @@
 package task_classes.a_1;
 
 public class Main_a_1 {
+    // TODO вынести создание студентов в оттельный метод, использовать конструктор массива {}
     public static void main(String[] args) {
         Student student = new Student("1", "1", "1", "1", 1, "1", "1", "1", "7", "4");
         Student student2 = new Student("2", "2", "2", "2", 2, "2", "2", "2", "8", "5");
@@ -25,7 +26,9 @@ public class Main_a_1 {
 
     }
 
+
     //    список учебной группы.
+    // TODO сделать private
     static void sortByGroup(Student[] students, String group) {
         System.out.println("Студенты отсортированны по заданной группе ");
         for (Student s : students) {
@@ -36,6 +39,7 @@ public class Main_a_1 {
     }
 
     //    список студентов заданного факультета
+    // TODO сделать private
     static void sortByFaculty(Student[] students, String faculty) {
         System.out.println("Студенты отсортированны по заданному факультету ");
         for (Student s : students) {
@@ -46,6 +50,7 @@ public class Main_a_1 {
     }
 
     //    список студентов, родившихся после заданного года;
+    // TODO сделать private
     static void sortByBirthAfter(Student[] students, int birthDate) {
         System.out.println("Студенты родившиеся после указанного года");
         for (Student s : students) {
@@ -56,6 +61,7 @@ public class Main_a_1 {
     }
 
     //    списки студентов для каждого факультета и курса;
+    // TODO сделать private
     static void sortByFacultyAndGroup(Student[] students, String faculty, String course) {
         System.out.printf("Студенты отсортированные по %s факультету и %s курсу %n", faculty, course);
         for (Student s : students) {

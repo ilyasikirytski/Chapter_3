@@ -3,6 +3,7 @@ package task_classes.b_9;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// TODO замечания такие же как в 7-ой задачче
 public class Main_b_9 {
     public static void main(String[] args) {
         Circle circle = new Circle(1, 1, 0, 5);
@@ -23,6 +24,8 @@ public class Main_b_9 {
         maxAndMinSqrt(area);
     }
 
+    // TODO имя square!
+    // TODO убрать final double PI = Math.PI;
     static void area(Circle[] circles, ArrayList<Double> area) {
         System.out.println("-----------------");
         final double PI = Math.PI;

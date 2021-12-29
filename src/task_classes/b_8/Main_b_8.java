@@ -3,6 +3,7 @@ package task_classes.b_8;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// TODO замечания такие же как в 7-ой задачче
 public class Main_b_8 {
     public static void main(String[] args) {
         Quadrilateral quadrilateral = new Quadrilateral(1, 1, 1, 1);
