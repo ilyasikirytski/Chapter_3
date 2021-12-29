@@ -6,14 +6,14 @@ package task_classes.a_3;
 a) список пациентов, имеющих данный диагноз;
 b) список пациентов, номер медицинской карты которых находится в заданном интервале.*/
 public class Patient {
-    String id;
-    String surName;
-    String name;
-    String patronymic;
-    String address;
-    String telNumber;
-    String medicCardNumber;
-    String diagnosis;
+    private String id;
+    private String surName;
+    private String name;
+    private String patronymic;
+    private String address;
+    private String telNumber;
+    private String medicCardNumber;
+    private String diagnosis;
 
     public Patient(String id, String surName, String name, String patronymic, String address, String telNumber, String medicCardNumber, String diagnosis) {
         this.id = id;
