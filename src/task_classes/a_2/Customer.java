@@ -5,15 +5,14 @@ package task_classes.a_2;// task_classes.a_2.Customer: id, Фамилия, Им�
 //b) список покупателей, у которых номер кредитной карточки находится
 //в заданном интервале.
 
-// TODO использовать Comparable или Comparator
-public class Customer {
-    String id;
-    String surName;
-    String name;
-    String patronymic;
-    String address;
-    int cardNumber;
-    String bankNumber;
+public class Customer implements Comparable<Customer> {
+    private String id;
+    private String surName;
+    private String name;
+    private String patronymic;
+    private String address;
+    private int cardNumber;
+    private String bankNumber;
 
     public Customer(String id, String surName, String name, String patronymic, String address, int cardNumber, String bankNumber) {
         this.id = id;
@@ -86,6 +85,11 @@ public class Customer {
 
     public void setBankNumber(String bankNumber) {
         this.bankNumber = bankNumber;
+    }
+
+    @Override
+    public int compareTo(Customer customer) {
+        return this.name.compareTo(customer.getName());
     }
 
     @Override
