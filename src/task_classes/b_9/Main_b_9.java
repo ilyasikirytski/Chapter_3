@@ -1,65 +1,62 @@
 package task_classes.b_9;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
-// TODO замечания такие же как в 7-ой задачче
+// DO замечания такие же как в 7-ой задачче
 public class Main_b_9 {
     public static void main(String[] args) {
-        Circle circle = new Circle(1, 1, 0, 5);
-        Circle circle2 = new Circle(2, 2, 0, 5);
-        Circle circle3 = new Circle(3, 3, 3, 5);
-        Circle circle4 = new Circle(4, 4, 3, 5);
+        Circle[] circles = new Circle[]{
+                new Circle(1, 1, 0, 5),
+                new Circle(2, 2, 0, 5),
+                new Circle(3, 3, 3, 5),
+                new Circle(4, 4, 3, 5)
+        };
 
-        Circle[] circles = new Circle[4];
-        circles[0] = circle;
-        circles[1] = circle2;
-        circles[2] = circle3;
-        circles[3] = circle4;
-        ArrayList<Double> area = new ArrayList<>();
+        ArrayList<Circle> area = new ArrayList<>();
 
-        area(circles, area);
-        circleLength(circles, area);
-        onTheSameLine(circles);
-        maxAndMinSqrt(area);
+        square(circles);
+        circleLength(circles);
+        groupingOnTheSameLine(circles);
+        maxAndMinSqrt(circles);
     }
 
-    // TODO имя square!
-    // TODO убрать final double PI = Math.PI;
-    static void area(Circle[] circles, ArrayList<Double> area) {
+    static double circleSquare(Circle circle) {
+        return Math.PI * (circle.getRadius() * circle.getRadius());
+    }
+
+    // DO имя square!
+    // DO убрать final double PI = Math.PI;
+    static void square(Circle[] circles) {
         System.out.println("-----------------");
-        final double PI = Math.PI;
-        for (Circle circle : circles) {
-            double result = PI * (circle.radius * circle.radius);
-            area.add(result);
-            System.out.printf("Площадь окружности №%s равна %s%n", circle.id, result);
+        for (Circle c : circles) {
+            System.out.printf("Площадь окружности №%s равна %s%n", c.getId(), circleSquare(c));
         }
     }
 
-    static void circleLength(Circle[] circles, ArrayList<Double> area) {
+    static void circleLength(Circle[] circles) {
         System.out.println("-----------------");
-        final double PI = Math.PI;
-        for (Circle circle : circles) {
-            double result = 2 * (PI * (circle.radius));
-            area.add(result);
-            System.out.printf("Длинна окружности №%s равна %s%n", circle.id, result);
+        for (Circle c : circles) {
+            System.out.printf("Длинна окружности №%s равна %s%n", c.getId(), c.findingLength());
         }
     }
 
-    static void onTheSameLine(Circle[] circles) {
+    static void groupingOnTheSameLine(Circle[] circles) {
         System.out.println("-----------------");
         for (int i = 1; i < circles.length; i++) {
-            if (circles[i].x == circles[i - 1].x || circles[i].x == circles[i - 1].y) {
+            if (circles[i].getX() == circles[i - 1].getX() || circles[i].getX() == circles[i - 1].getY()) {
                 System.out.printf("Окружность №%s c центром в точке [X:%s,Y:%s] лежит на одной прямой с окружностью №%s" +
-                        " c центром в точке [X:%s,Y:%s] %n", circles[i].id, circles[i].x, circles[i].y, circles[i-1].id, circles[i-1].x, circles[i-1].y);
+                        " c центром в точке [X:%s,Y:%s] %n", circles[i].getId(), circles[i].getX(), circles[i].getY(),
+                        circles[i - 1].getId(), circles[i - 1].getX(), circles[i - 1].getY());
             }
         }
     }
 
-    static void maxAndMinSqrt(ArrayList<Double> area) {
+    static void maxAndMinSqrt(Circle[] circles) {
         System.out.println("---------------------");
         System.out.println("Группа окружности");
-        System.out.printf("Min area : %s; %n", Collections.min(area));
-        System.out.printf("Max area : %s; %n", Collections.max(area));
+        System.out.printf("Min %s; %n", Collections.min(Arrays.stream(circles).toList()));
+        System.out.printf("Max %s; %n", Collections.max(Arrays.stream(circles).toList()));
     }
 }

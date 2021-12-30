@@ -5,11 +5,13 @@ package task_classes.b_9;/*
 Определить наибольший и наименьший по площади (периметру) объект.
  */
 
-public class Circle {
-    int id;
-    double radius;
-    double x;
-    double y;
+import task_classes.b_7.Triangle;
+
+public class Circle implements Comparable<Circle>{
+    private int id;
+    private double radius;
+    private double x;
+    private double y;
 
     public Circle(int id, double radius, double x, double y) {
         this.id = id;
@@ -48,5 +50,36 @@ public class Circle {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    double findingLength(){
+        return 2 * (Math.PI * (radius));
+    }
+
+//    static boolean onTheSameLine(Circle circles) {
+//        boolean x = false;
+//        if (circles[i].getX() == circles[i - 1].getX() || circles[i].getX() == circles[i - 1].getY()) {
+//            x = true;
+//        }
+//        return x;
+//    }
+
+
+    @Override
+    public String toString() {
+        return "Окружность = " + findingLength();
+    }
+
+    @Override
+    public int compareTo(Circle c) {
+        double firstLength = findingLength();
+        double secondLength = c.findingLength();
+        if (firstLength > secondLength) {
+            return 1;
+        } else if (firstLength == secondLength) {
+            return 0;
+        } else if (firstLength < secondLength) {
+            return -1;
+        } else return 2;
     }
 }
