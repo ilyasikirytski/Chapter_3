@@ -3,108 +3,108 @@ package task_classes.b_8;
 import java.util.ArrayList;
 import java.util.Collections;
 
-// TODO замечания такие же как в 7-ой задачче
+import static java.lang.Math.sqrt;
+
+// DO замечания такие же как в 7-ой задачче
 public class Main_b_8 {
     public static void main(String[] args) {
-        Quadrilateral quadrilateral = new Quadrilateral(1, 1, 1, 1);
-        Quadrilateral quadrilateral2 = new Quadrilateral(2, 2, 2, 2);
-        Quadrilateral quadrilateral3 = new Quadrilateral(3, 3, 4, 4);
-        Quadrilateral quadrilateral4 = new Quadrilateral(4, 4, 5, 5);
+        Quadrilateral[] quadrilaterals = new Quadrilateral[]{
+                new Quadrilateral(1, 1, 1, 1),
+                new Quadrilateral(2, 2, 2, 2),
+                new Quadrilateral(3, 4, 3, 4),
+                new Quadrilateral(4, 4, 5, 5)
+        };
 
-        Quadrilateral[] quadrilaterals = new Quadrilateral[4];
-        quadrilaterals[0] = quadrilateral;
-        quadrilaterals[1] = quadrilateral2;
-        quadrilaterals[2] = quadrilateral3;
-        quadrilaterals[3] = quadrilateral4;
-        ArrayList<Quadrilateral> quadril = new ArrayList<>();
-        ArrayList<Quadrilateral> rectangle = new ArrayList<>();
-        ArrayList<Quadrilateral> rhombus = new ArrayList<>();
-        ArrayList<Double> quadrilDouble = new ArrayList<>();
-        ArrayList<Double> rectangleDouble = new ArrayList<>();
-        ArrayList<Double> rhombusDouble = new ArrayList<>();
-        ArrayList<Double> perimeter = new ArrayList<>();
+        ArrayList<Quadrilateral> groupOfQuadril = new ArrayList<>();
+        ArrayList<Quadrilateral> groupOfRectangle = new ArrayList<>();
+        ArrayList<Quadrilateral> groupOfRhombus = new ArrayList<>();
 
-        square(quadrilaterals);
-        perimeter(quadrilaterals, perimeter);
-        groupOfTriangle(quadrilaterals, quadrilDouble, rectangleDouble, rhombusDouble, quadril, rectangle, rhombus);
-        numberOfGroupOfTriangles(quadril, rectangle, rhombus);
-        maxAndMinSqrt(quadrilDouble, rectangleDouble, rhombusDouble);
+        findingSquare(quadrilaterals);
+        findingPerimeter(quadrilaterals);
+        groupingOfQuadLaterals(quadrilaterals, groupOfQuadril, groupOfRectangle, groupOfRhombus);
+        numberOfQuadlateralsInGroup(groupOfQuadril, groupOfRectangle, groupOfRhombus);
+        maxAndMinSqrt(groupOfQuadril, groupOfRectangle, groupOfRhombus);
     }
 
-    static void square(Quadrilateral[] quadrilaterals) {
+    static double square(Quadrilateral quadrilaterals) {
+        return (sqrt(quadrilaterals.perimeter() * (quadrilaterals.perimeter() - quadrilaterals.getA()) * (quadrilaterals.perimeter() - quadrilaterals.getB()) * (quadrilaterals.perimeter() - quadrilaterals.getC())));
+    }
+
+    static void findingSquare(Quadrilateral[] quadrilaterals) {
         System.out.println("---------------------");
-        for (int i = 0; i < quadrilaterals.length; i++) {
-            if (quadrilaterals[i].a == quadrilaterals[i].b && quadrilaterals[i].b == quadrilaterals[i].c && quadrilaterals[i].c == quadrilaterals[i].d && quadrilaterals[i].d == quadrilaterals[i].a) {
-                double area = quadrilaterals[i].a * quadrilaterals[i].b;
-                System.out.printf("Четырёхугольник № %s - Квадрат; Площадь = %s%n", i, area);
-            } else if (quadrilaterals[i].a == quadrilaterals[i].c && quadrilaterals[i].b == quadrilaterals[i].d) {
-                double area = quadrilaterals[i].a * quadrilaterals[i].b;
-                System.out.printf("Четырёхугольник № %s - Прямоугольник; Площадь = %s %n", i, area);
-            } else if (quadrilaterals[i].a + quadrilaterals[i].c == quadrilaterals[i].b + quadrilaterals[i].d) {
-                double area = ((quadrilaterals[i].a * quadrilaterals[i].c) * (quadrilaterals[i].b * quadrilaterals[i].d)) / 2;
-                System.out.printf("Четырёхугольник № %s - Ромб; Площадь = %s %n", i, area);
+        for (Quadrilateral q : quadrilaterals) {
+            System.out.printf("Площадь %s равна: %s%n", q, square(q));
+        }
+    }
+
+    static void findingPerimeter(Quadrilateral[] quadrilaterals) {
+        System.out.println("---------------------");
+        for (Quadrilateral q : quadrilaterals) {
+            System.out.printf("Периметр %s равен: %s%n", q, q.perimeter());
+        }
+    }
+
+    static void print(Quadrilateral q, String str) {
+        System.out.println("Четырёхугольник со сторонами {" +
+                "a=" + q.getA() +
+                ", b=" + q.getB() +
+                ", c=" + q.getC() +
+                ", d=" + q.getD() +
+                '}' + " - " + str);
+    }
+
+    // DO названия методов с глаголом
+    // DO периметр в отдельный метод, лучше в Triangle
+    // DO вывод на экран и группировку разделить на 2 метода
+    // DO вынести определение типа треугольника в отдельный метод
+    static void groupingOfQuadLaterals(Quadrilateral[] quadrilaterals, ArrayList<Quadrilateral> groupOfQuadril, ArrayList<Quadrilateral> groupOfRectangle, ArrayList<Quadrilateral> groupOfRhombus) {
+        System.out.println("---------------------");
+        for (Quadrilateral q : quadrilaterals) {
+            if (q.groupingOfQuadril(q, groupOfQuadril)) {
+                print(q, "Квадрат");
+            } else if (q.groupingOfRectangle(q, groupOfRectangle)) {
+                print(q, "Прямоугольник");
+            } else if (q.groupingOfRhombus(q, groupOfRhombus)) {
+                print(q, "Ромб");
             }
         }
     }
 
-    // S = (AC · BD) / 2 area rhombus
-    static void perimeter(Quadrilateral[] quadrilaterals, ArrayList<Double> perimeter) {
+    static void numberOfQuadlateralsInGroup(ArrayList<Quadrilateral> groupOfQuadril, ArrayList<Quadrilateral> groupOfRectangle, ArrayList<Quadrilateral> groupOfRhombus) {
         System.out.println("---------------------");
-        for (int i = 0; i < quadrilaterals.length; i++) {
-            double perim = quadrilaterals[i].a + quadrilaterals[i].b + quadrilaterals[i].c + quadrilaterals[i].d;
-            perimeter.add(perim);
-            System.out.printf("Периметр четырёхугольника номер: %s равен: %s%n", i, perimeter.get(i));
+        if (groupOfQuadril != null) {
+            System.out.printf("Кол-во квадратов - %s%n", groupOfQuadril.size());
+        }
+        if (groupOfRectangle != null) {
+            System.out.printf("Кол-во прямоугольников - %s%n", groupOfRectangle.size());
+        }
+        if (groupOfRhombus != null) {
+            System.out.printf("Кол-во ромбов - %s%n", groupOfRhombus.size());
         }
     }
 
-    static void groupOfTriangle(Quadrilateral[] quadrilaterals, ArrayList<Double> quadrilDouble, ArrayList<Double> rectangleDouble, ArrayList<Double> rhombusDouble, ArrayList<Quadrilateral> quadril, ArrayList<Quadrilateral> rectangle, ArrayList<Quadrilateral> rhombus) {
-        System.out.println("---------------------");
-        for (int i = 0; i < quadrilaterals.length; i++) {
-            if (quadrilaterals[i].a == quadrilaterals[i].b && quadrilaterals[i].b == quadrilaterals[i].c && quadrilaterals[i].c == quadrilaterals[i].d && quadrilaterals[i].d == quadrilaterals[i].a) {
-                quadril.add(quadrilaterals[i]);
-                quadrilDouble.add(quadrilaterals[i].a + quadrilaterals[i].b + quadrilaterals[i].c + quadrilaterals[i].d);
-                System.out.printf("Четырёхугольник № %s - Квадрат %n", i);
-            } else if (quadrilaterals[i].a == quadrilaterals[i].c && quadrilaterals[i].b == quadrilaterals[i].d) {
-                rectangle.add(quadrilaterals[i]);
-                rectangleDouble.add(quadrilaterals[i].a + quadrilaterals[i].b + quadrilaterals[i].c + quadrilaterals[i].d);
-                System.out.printf("Четырёхугольник № %s - Прямоугольник %n", i);
-            } else if (quadrilaterals[i].a + quadrilaterals[i].c == quadrilaterals[i].b + quadrilaterals[i].d) {
-                rhombus.add(quadrilaterals[i]);
-                rhombusDouble.add(quadrilaterals[i].a + quadrilaterals[i].b + quadrilaterals[i].c + quadrilaterals[i].d);
-                System.out.printf("Четырёхугольник № %s - Ромб %n", i);
-            }
-        }
-    }
-
-    static void numberOfGroupOfTriangles(ArrayList<Quadrilateral> quadril, ArrayList<Quadrilateral> rectangle, ArrayList<Quadrilateral> rhombus) {
-        System.out.println("---------------------");
-        if (quadril != null) {
-            System.out.printf("Кол-во квадратов - %s%n", quadril.size());
-        }
-        if (rectangle != null) {
-            System.out.printf("Кол-во прямоугольников - %s%n", rectangle.size());
-        }
-        if (rhombus != null) {
-            System.out.printf("Кол-во ромбов - %s%n", rhombus.size());
-        }
-    }
-
-    static void maxAndMinSqrt(ArrayList<Double> quadrilDouble, ArrayList<Double> rectangleDouble, ArrayList<Double> rhombusDouble) {
+    static void maxAndMinSqrt(ArrayList<Quadrilateral> groupOfQuadril, ArrayList<Quadrilateral> groupOfRectangle, ArrayList<Quadrilateral> groupOfRhombus) {
         System.out.println("---------------------");
         System.out.println("Группа квадраты");
-        for (int i = 1; i < quadrilDouble.size(); i++) {
-            System.out.printf("Min perimeter : %s; %n", Collections.min(quadrilDouble));
-            System.out.printf("Max perimeter : %s; %n", Collections.max(quadrilDouble));
+        if (!groupOfQuadril.isEmpty()) {
+            System.out.printf("Min perimeter : %s; %n", Collections.min(groupOfQuadril));
+            System.out.printf("Max perimeter : %s; %n", Collections.max(groupOfQuadril));
+        } else {
+            System.out.println("Нет элементов");
         }
         System.out.println("Группа прямоугольники");
-        for (int i = 1; i < rectangleDouble.size(); i++) {
-            System.out.printf("Min perimeter : %s; %n", Collections.min(rectangleDouble));
-            System.out.printf("Max perimeter : %s; %n", Collections.max(rectangleDouble));
+        if (!groupOfRectangle.isEmpty()) {
+            System.out.printf("Min perimeter : %s; %n", Collections.min(groupOfRectangle));
+            System.out.printf("Max perimeter : %s; %n", Collections.max(groupOfRectangle));
+        } else {
+            System.out.println("Нет элементов");
         }
         System.out.println("Группа ромбы");
-        for (int i = 1; i < rhombusDouble.size(); i++) {
-            System.out.printf("Min perimeter : %s; %n", Collections.min(rhombusDouble));
-            System.out.printf("Max perimeter : %s; %n", Collections.max(rhombusDouble));
+        if (!groupOfRhombus.isEmpty()) {
+            System.out.printf("Min perimeter : %s; %n", Collections.min(groupOfRhombus));
+            System.out.printf("Max perimeter : %s; %n", Collections.max(groupOfRhombus));
+        } else {
+            System.out.println("Нет элементов");
         }
     }
 }
