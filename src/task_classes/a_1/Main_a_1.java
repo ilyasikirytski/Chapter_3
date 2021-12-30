@@ -19,7 +19,7 @@ public class Main_a_1 {
         sortByFacultyAndGroup(arrOfStudents, "3", "10");
     }
 
-    //    список учебной группы.
+    //   список учебной группы.
     private static void sortByGroup(Student[] students, String group) {
         System.out.println("Студенты отсортированны по заданной группе ");
         for (Student s : students) {
@@ -29,7 +29,7 @@ public class Main_a_1 {
         }
     }
 
-    //    список студентов заданного факультета
+    //   список студентов заданного факультета
     private static void sortByFaculty(Student[] students, String faculty) {
         System.out.println("Студенты отсортированны по заданному факультету ");
         for (Student s : students) {
@@ -39,7 +39,7 @@ public class Main_a_1 {
         }
     }
 
-    //    список студентов, родившихся после заданного года;
+    //   список студентов, родившихся после заданного года;
     private static void sortByBirthAfter(Student[] students, int birthDate) {
         System.out.println("Студенты родившиеся после указанного года");
         for (Student s : students) {
@@ -49,7 +49,7 @@ public class Main_a_1 {
         }
     }
 
-    //    списки студентов для каждого факультета и курса;
+    //   списки студентов для каждого факультета и курса;
     private static void sortByFacultyAndGroup(Student[] students, String faculty, String course) {
         System.out.printf("Студенты отсортированные по %s факультету и %s курсу %n", faculty, course);
         for (Student s : students) {
