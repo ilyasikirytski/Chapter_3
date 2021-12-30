@@ -1,62 +1,54 @@
-// TODO подправить к синтаксису Kotlin
+package task_classes
+
+// DO замечания такие же как в 7-ой задачче
 fun main() {
-    val circle = Kot_B_9_Circle(1, 1.0, 0.0, 5.0)
-    val circle2 = Kot_B_9_Circle(2, 2.0, 0.0, 4.0)
-    val circle3 = Kot_B_9_Circle(3, 3.0, 3.0, 4.0)
-    val circle4 = Kot_B_9_Circle(4, 4.0, 3.0, 5.0)
-    val circles = arrayOfNulls<Kot_B_9_Circle>(4)
-    circles[0] = circle
-    circles[1] = circle2
-    circles[2] = circle3
-    circles[3] = circle4
-    val area = ArrayList<Double>()
-    area(circles, area)
-    circleLength(circles, area)
-    onTheSameLine(circles)
-    maxAndMinSqrt(area)
+    val circles: Array<Kot_B_9_Circle> = arrayOf(
+        Kot_B_9_Circle(1, 1.0, 0.0, 5.0),
+        Kot_B_9_Circle(2, 2.0, 0.0, 5.0),
+        Kot_B_9_Circle(3, 3.0, 3.0, 5.0),
+        Kot_B_9_Circle(4, 4.0, 3.0, 5.0)
+    )
+    square(circles)
+    circleLength(circles)
+    groupingOnTheSameLine(circles)
+    maxAndMinSqrt(circles)
 }
 
-fun area(circles: Array<Kot_B_9_Circle?>, area: ArrayList<Double>) {
+fun circleSquare(circle: Kot_B_9_Circle): Double {
+    return Math.PI * (circle.radius * circle.radius)
+}
+
+fun square(circles: Array<Kot_B_9_Circle>) {
     println("-----------------")
-    val PI = Math.PI
-    for (circle in circles) {
-        val result = PI * (circle!!.radius * circle.radius)
-        area.add(result)
-        System.out.printf("Площадь окружности №%s равна %s%n", circle.id, result)
+    for (c in circles) {
+        System.out.printf("Площадь окружности №%s равна %s%n", c.id, circleSquare(c))
     }
 }
 
-fun circleLength(circles: Array<Kot_B_9_Circle?>, area: ArrayList<Double>) {
+fun circleLength(circles: Array<Kot_B_9_Circle>) {
     println("-----------------")
-    val PI = Math.PI
-    for (circle in circles) {
-        val result = 2 * (PI * circle!!.radius)
-        area.add(result)
-        System.out.printf("Длинна окружности №%s равна %s%n", circle.id, result)
+    for (c in circles) {
+        System.out.printf("Длинна окружности №%s равна %s%n", c.id, c.findingLength())
     }
 }
 
-fun onTheSameLine(circles: Array<Kot_B_9_Circle?>) {
+fun groupingOnTheSameLine(circles: Array<Kot_B_9_Circle>) {
     println("-----------------")
     for (i in 1 until circles.size) {
-        if (circles[i]!!.x == circles[i - 1]!!.x || circles[i]!!.x == circles[i - 1]!!.y) {
-            System.out.printf(
-                "Окружность №%s c центром в точке [X:%s,Y:%s] лежит на одной прямой с окружностью №%s" +
-                        " c центром в точке [X:%s,Y:%s] %n",
-                circles[i]!!.id,
-                circles[i]!!.x,
-                circles[i]!!.y,
-                circles[i - 1]!!.id,
-                circles[i - 1]!!.x,
-                circles[i - 1]!!.y
+        if (circles[i].x == circles[i - 1].x || circles[i].x == circles[i - 1].y) {
+            println(
+                "Окружность ${circles[i].id} " +
+                        "c центром в точке [${circles[i].x} | ${circles[i].y}] " +
+                        "лежит на одной прямой с окружностью ${circles[i - 1].id} " +
+                        "c центром в точке [${circles[i - 1].x} | ${circles[i - 1].y}]",
             )
         }
     }
 }
 
-fun maxAndMinSqrt(area: ArrayList<Double>?) {
+fun maxAndMinSqrt(circles: Array<Kot_B_9_Circle>) {
     println("---------------------")
     println("Группа окружности")
-    System.out.printf("Min area : %s; %n", area?.minOrNull())
-    System.out.printf("Max area : %s; %n", area?.maxOrNull())
+    println("Min ${circles.minOf { it.findingLength() }};")
+    println("Max ${circles.maxOf { it.findingLength() }};")
 }
